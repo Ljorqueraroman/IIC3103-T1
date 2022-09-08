@@ -1,0 +1,36 @@
+﻿
+
+#background {
+    background-color: #6A041D;
+    min-height: 100vh;
+}
+
+.panel {
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+#header-container {
+    height: 12vh;
+}
+
+
+#content-container {
+    background-color: white;
+    min-height: 82vh;
+}
+
+
+h3 {
+    text-align: center;
+}
+
+#chat-messages {
+    overflow-y: scroll;
+}
+
+#map {
+    width: 60vw;
+    height: 80vh;
+    margin: auto;
+}

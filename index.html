@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Tarea-1</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" rel="stylesheet" />
+    <link href="css/leaflet.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div id="background" class="row">
+
+        <div id="header-container" class="panel col s10 offset-s1">
+
+            <div id="title-container" class="header-element col s9">
+                <h3>Tarea 1 - IIC3103</h3>
+            </div>
+            <div id="status-text" class="header-element col s2">
+                <h3>Estado:</h3>
+            </div>
+            <div id="status-icons" class="header-element col s1">
+                <h3></h3>
+                <a id="connected" class="btn-floating btn-large green" style="display: none;"><i class="material-icons">gps_fixed</i></a>
+                <a id="disconnected" class="btn-floating btn-large red"><i class="material-icons">gps_off</i></a>
+            </div>
+
+        </div>
+
+        <div id="content-container" class="panel col s10 offset-s1">
+            <div id="map" class="col s9">
+
+            </div>
+
+            <div id="chat-messages" class="col s3">
+
+            </div>
+        </div>
+
+    </div>
+    
+
+
+    <script src="js/materialize.js"></script>
+    <script src="/leaflet/leaflet.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
