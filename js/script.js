@@ -40,13 +40,13 @@ function createSocket() {
     let socket = new WebSocket("wss://tarea-1.2022-2.tallerdeintegracion.cl/connect");
 
     socket.onopen = function (e) {
-        alert("Connected!")
+        addMessage("Connected!")
         connectedButton.style.display = 'block';
         disconnectedButton.style.display = 'none';
     }
 
     socket.onclose = function (event) {
-        alert("Disconnected...")
+        addMessage("Disconnected.")
         connectedButton.style.display = 'none';
         disconnectedButton.style.display = 'block';
         webSocket = null;
@@ -82,10 +82,22 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 //#endregion
 
+function getTimeStamp() {
+    var today = new Date();
+    var hours = today.getHours();
+    var minutes = today.getMinutes();
+
+    return "["+hours+":"+minutes+"]: ";
+}
+
 function addMessage(message) {
     var chatContainer = document.getElementById('chat-messages');
 
+    var messageElem = document.createElement("div");
+    messageElem.className = "chat-message";
+    messageElem.textContent = getTimeStamp() + message;
 
+    chatContainer.append(messageElem);
 }
 
 
