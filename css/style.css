@@ -10,37 +10,47 @@
     margin-bottom: 10px;
 }
 
-#header-container {
+#top-panel {
     height: 12vh;
 }
-
-
-#content-container {
-    background-color: white;
-    min-height: 82vh;
-}
-
 
 h3 {
     text-align: center;
 }
 
-#chat-messages {
+h4 {
+    text-align: center;
+}
+
+#content-panel {
+    height: 85vh;
+}
+
+.content-tile {
+    height: 10vh;
+}
+
+.content-list {
+    height: 75vh;
     overflow-y: scroll;
+    border: dotted;
+}
+
+#map-container {
+    width: 40vw;
+    height: 80vh;
+    margin: auto;
+}
+
+#message-list {
+    
 }
 
 .chat-message {
-
     padding: 3px;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 5px;
     margin-top: 5px;
     background-color: #FEEFDD;
-}
-
-#map {
-    width: 60vw;
-    height: 80vh;
-    margin: auto;
 }

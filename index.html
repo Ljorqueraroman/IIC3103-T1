@@ -5,15 +5,15 @@
     <title>Tarea-1</title>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="css/materialize.css" rel="stylesheet" />
-    <link href="css/leaflet.css" rel="stylesheet" />
+    <link href="css/libraries/leaflet.css" rel="stylesheet" />
+    <link href="css/libraries/materialize.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
 </head>
 <body>
 
     <div id="background" class="row">
 
-        <div id="header-container" class="panel col s10 offset-s1">
+        <div id="top-panel" class="panel col s10 offset-s1">
 
             <div id="title-container" class="header-element col s9">
                 <h3>Tarea 1 - IIC3103</h3>
@@ -29,22 +29,38 @@
 
         </div>
 
-        <div id="content-container" class="panel col s10 offset-s1">
-            <div id="map" class="col s9">
+        <div id="content-panel" class="panel col s10 offset-s1">
+            <div id="flights-container" class="col s3">
+                
+                <div id="flight-title" class="content-title">
+                    <h4>Vuelos</h4>
+                </div>
+                <div id="flight-list" class="content-list">
+
+                </div>
+            </div>
+
+            <div id="map-container" class="col s8">
 
             </div>
 
-            <div id="chat-messages" class="col s3">
+            <div id="chat-container" class="col s3">
+                <div id="chat-title" class="content-title">
+                    <h4>Mensajes</h4>
+                </div>
+                <div id="message-list" class="content-list">
+
+                </div>
 
             </div>
         </div>
 
     </div>
-    
 
-
-    <script src="js/materialize.js"></script>
-    <script src="/leaflet/leaflet.js"></script>
+    <script src="js/libraries/materialize.js"></script>
+    <script src="js/libraries/leaflet.js"></script>
+    <script src="js/common-functions.js"></script>
+    <script src="js/socket-messages.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

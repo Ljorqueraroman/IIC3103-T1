@@ -1,24 +1,19 @@
 ﻿
 var webSocket;
-
-function getConnectedButton() {
-    return document.getElementById("connected");
-}
-
-function getDisconnectedButton() {
-    return document.getElementById("disconnected");
-}
+var map;
 
 function toggleConnection(isConnected) {
     if (isConnected) {
         webSocket.close();
     }
     else {
-        createSocket();
+        webSocket = createSocket();
     }
 }
 
 function init() {
+    map = createMap()
+
     let connectedButton = getConnectedButton();
     let disconnectedButton = getDisconnectedButton();
 
@@ -34,72 +29,50 @@ function init() {
 }
 
 function createSocket() {
-    let connectedButton = getConnectedButton();
-    let disconnectedButton = getDisconnectedButton();
 
-    let socket = new WebSocket("wss://tarea-1.2022-2.tallerdeintegracion.cl/connect");
+    connectedButton = getConnectedButton();
+    disconnectedButton = getDisconnectedButton();
+
+    socket = new WebSocket("wss://tarea-1.2022-2.tallerdeintegracion.cl/connect");
 
     socket.onopen = function (e) {
-        addMessage("Connected!")
+        addChatMessage("Connected!")
         connectedButton.style.display = 'block';
         disconnectedButton.style.display = 'none';
+
+        sendJoinMessage(socket);
     }
 
     socket.onclose = function (event) {
-        addMessage("Disconnected.")
+        addChatMessage("Disconnected.")
         connectedButton.style.display = 'none';
         disconnectedButton.style.display = 'block';
         webSocket = null;
     }
 
     socket.onmessage = function (event) {
-        let message = event.data;
-
-        let messageElem = document.createElement('div');
-        messageElem.textContent = message;
-
-        document.getElementById('messages').prepend(messageElem);
+        processSocketEvent(event.data);
     }
 
     socket.onerror = function (event) {
+        addChatMessage("CONNECTION ERROR")
     }
 
-    webSocket = socket;
+    return socket
 }
 
-//#region Setup map
-var map = L.map('map', {
-    center: [0, 0],
-    zoom: 3
-});
+function createMap() {
+    var map = L.map('map-container', {
+        center: [0, 0],
+        zoom: 3
+    });
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '© OpenStreetMap'
-}).addTo(map);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
 
-
-
-//#endregion
-
-function getTimeStamp() {
-    var today = new Date();
-    var hours = today.getHours();
-    var minutes = today.getMinutes();
-
-    return "["+hours+":"+minutes+"]: ";
+    return map;
 }
-
-function addMessage(message) {
-    var chatContainer = document.getElementById('chat-messages');
-
-    var messageElem = document.createElement("div");
-    messageElem.className = "chat-message";
-    messageElem.textContent = getTimeStamp() + message;
-
-    chatContainer.append(messageElem);
-}
-
-
 
 init();
